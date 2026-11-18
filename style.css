@@ -1,0 +1,68 @@
+:root {
+  --bg: #e9edf0;
+  --panel: #ffffff;
+  --ink: #16202b;
+  --muted: #5a6672;
+  --line: #d2d9df;
+  --ok: #1e6b52;
+  --low: #b7791f;
+  --out: #b3261e;
+  --font: Bahnschrift, "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11181f;
+    --panel: #1a232c;
+    --ink: #e6ecf1;
+    --muted: #93a0ac;
+    --line: #2d3945;
+    --ok: #4fc29a;
+    --low: #e0a742;
+    --out: #ff7d73;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--font); }
+main { max-width: 960px; margin: 0 auto; padding: 32px 16px 48px; }
+h1 { margin: 0; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.01em; }
+#summary { margin: 4px 0 24px; color: var(--muted); }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.toolbar input { flex: 1 1 200px; }
+input, select, button { font: inherit; color: inherit; }
+input, select { padding: 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+button { padding: 8px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+button:hover { border-color: var(--ink); }
+button.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+button.link { border: 0; background: none; color: var(--muted); text-decoration: underline; padding: 0; }
+:focus-visible { outline: 3px solid var(--low); outline-offset: 2px; }
+
+.table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font-weight: 600; color: var(--muted); font-size: 0.875rem; }
+tr:last-child td { border-bottom: 0; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* The memorable element: a stock-level bar coloured by status */
+.level { display: flex; align-items: center; gap: 10px; }
+.bar { width: 120px; height: 12px; background: var(--line); border-radius: 2px; overflow: hidden; flex: none; }
+.bar span { display: block; height: 100%; background: var(--ok); }
+.level.low .bar span { background: var(--low); }
+.level.out .bar span { background: var(--out); }
+.tag { color: var(--muted); font-size: 0.875rem; }
+.level.low .tag { color: var(--low); }
+.level.out .tag { color: var(--out); }
+
+.actions { white-space: nowrap; text-align: right; }
+.actions button { padding: 4px 10px; margin-left: 4px; }
+#empty { padding: 24px 0; color: var(--muted); }
+footer { margin-top: 24px; }
+.sr { position: absolute; left: -9999px; }
+
+dialog { width: min(420px, 92vw); padding: 24px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; }
+dialog::backdrop { background: rgba(10, 16, 22, 0.55); }
+dialog h2 { margin: 0 0 12px; }
+dialog label { display: block; margin-bottom: 12px; color: var(--muted); font-size: 0.9rem; }
+dialog input { display: block; width: 100%; margin-top: 4px; color: var(--ink); }
+.form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
